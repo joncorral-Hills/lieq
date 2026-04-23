@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LieQ — TV Screen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <link rel="stylesheet" href="tv.css" />
+</head>
+<body>
+
+<!-- SPLASH -->
+<div id="screen-splash" class="screen active">
+  <div class="logo-wrap">
+    <h1 class="logo">LieQ</h1>
+    <p class="tagline">Your Lying Quotient is about to be tested.</p>
+    <button id="btn-create-room" class="btn-primary">Create Room</button>
+  </div>
+</div>
+
+<!-- LOBBY -->
+<div id="screen-lobby" class="screen">
+  <div class="lobby-layout">
+    <div class="lobby-left">
+      <div class="room-code-label">Join at <span id="join-url-display">lieq.app/join</span></div>
+      <div id="room-code-display" class="room-code">----</div>
+      <div id="qrcode"></div>
+    </div>
+    <div class="lobby-right">
+      <h2 class="section-title">Players <span id="player-count-badge">0</span></h2>
+      <ul id="player-list" class="player-list"></ul>
+      <button id="btn-start" class="btn-primary" disabled>Start Game</button>
+      <p class="start-hint" id="start-hint">Need at least 2 players</p>
+    </div>
+  </div>
+</div>
+
+<!-- ROUND NEW -->
+<div id="screen-round-new" class="screen">
+  <div class="center-content">
+    <div class="round-badge">Round <span id="rn-round-number">1</span></div>
+    <h2 class="speaker-spotlight">🎤 <span id="rn-speaker-name">—</span></h2>
+    <p class="subtitle">is choosing their tier...</p>
+    <div class="tier-preview-row">
+      <div class="tier-chip common">Common ×1</div>
+      <div class="tier-chip niche">Niche ×2</div>
+      <div class="tier-chip deep">Deep Dive ×3</div>
+    </div>
+  </div>
+</div>
+
+<!-- SPEAKER READING -->
+<div id="screen-speaker-reading" class="screen">
+  <div class="center-content">
+    <div id="sr-tier-badge" class="tier-badge-large">NICHE</div>
+    <h2 class="speaker-spotlight"><span id="sr-speaker-name">—</span></h2>
+    <p class="subtitle">is reading their topic...</p>
+    <div class="thinking-dots"><span></span><span></span><span></span></div>
+  </div>
+</div>
+
+<!-- PUBLIC REVEAL -->
+<div id="screen-reveal" class="screen">
+  <div class="center-content">
+    <div id="rv-tier-badge" class="tier-badge-large">COMMON</div>
+    <div id="rv-topic" class="topic-hero">Topic Loading...</div>
+    <div class="reveal-speaker">Speaker: <strong id="rv-speaker-name">—</strong></div>
+    <div id="rv-countdown" class="countdown-large">3</div>
+  </div>
+</div>
+
+<!-- ROUND ACTIVE -->
+<div id="screen-active" class="screen">
+  <div class="active-layout">
+    <div class="active-top">
+      <div id="ac-tier-badge" class="tier-badge-small">COMMON</div>
+      <div class="speaker-label">🎤 <span id="ac-speaker-name">—</span></div>
+    </div>
+    <div id="ac-topic" class="topic-hero-active">Topic</div>
+    <div class="timer-ring-wrap">
+      <svg class="timer-ring" viewBox="0 0 120 120">
+        <circle class="ring-bg" cx="60" cy="60" r="52"/>
+        <circle id="ring-progress" class="ring-fg" cx="60" cy="60" r="52"/>
+      </svg>
+      <div id="ac-timer" class="timer-number">60</div>
+    </div>
+    <div class="player-tap-row" id="ac-player-tap-row"></div>
+  </div>
+</div>
+
+<!-- BS CHALLENGE -->
+<div id="screen-challenge" class="screen">
+  <div class="challenge-overlay">
+    <div class="bs-stamp">🚨 BS!</div>
+    <div class="challenge-who"><span id="ch-challenger">—</span> called BS!</div>
+    <div class="vote-bar-wrap">
+      <div class="vote-label">REAL <span id="ch-real-pct">0</span>%</div>
+      <div class="vote-bar">
+        <div id="ch-real-bar" class="bar-real" style="width:0%"></div>
+        <div id="ch-fake-bar" class="bar-fake" style="width:0%"></div>
+      </div>
+      <div class="vote-label">FAKE <span id="ch-fake-pct">0</span>%</div>
+    </div>
+    <div id="ch-vote-count" class="vote-count">Waiting for votes...</div>
+    <div id="ch-timer-bar-wrap" class="ch-timer-bar-wrap">
+      <div id="ch-timer-bar" class="ch-timer-bar"></div>
+    </div>
+  </div>
+</div>
+
+<!-- CHALLENGE RESULT -->
+<div id="screen-challenge-result" class="screen">
+  <div class="center-content">
+    <div id="cr-verdict" class="verdict">BUSTED!</div>
+    <div id="cr-detail" class="verdict-detail">The jury has spoken.</div>
+    <div id="cr-deltas" class="delta-list"></div>
+  </div>
+</div>
+
+<!-- ROUND END -->
+<div id="screen-round-end" class="screen">
+  <div class="center-content">
+    <div class="round-end-title">Round Over</div>
+    <div id="re-deltas" class="delta-list"></div>
+  </div>
+</div>
+
+<!-- LEADERBOARD -->
+<div id="screen-leaderboard" class="screen">
+  <div class="lb-layout">
+    <h2 class="lb-title">Leaderboard</h2>
+    <ol id="lb-list" class="lb-list"></ol>
+  </div>
+</div>
+
+<!-- GAME END -->
+<div id="screen-game-end" class="screen">
+  <div class="center-content">
+    <div class="winner-crown">👑</div>
+    <div class="winner-name" id="ge-winner">—</div>
+    <div class="winner-subtitle">wins LieQ!</div>
+    <div id="ge-stats" class="stats-grid"></div>
+    <button id="btn-play-again" class="btn-primary" style="margin-top:2rem">Play Again</button>
+  </div>
+</div>
+
+<script src="tv.js"></script>
+</body>
+</html>

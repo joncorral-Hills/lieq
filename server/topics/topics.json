@@ -1,0 +1,1572 @@
+[
+  {
+    "id": "c001",
+    "text": "How GPS works",
+    "tier": "common"
+  },
+  {
+    "id": "c002",
+    "text": "Why planes fly",
+    "tier": "common"
+  },
+  {
+    "id": "c003",
+    "text": "What inflation means",
+    "tier": "common"
+  },
+  {
+    "id": "c004",
+    "text": "How vaccines work",
+    "tier": "common"
+  },
+  {
+    "id": "c005",
+    "text": "Why the sky is blue",
+    "tier": "common"
+  },
+  {
+    "id": "c006",
+    "text": "How credit cards work",
+    "tier": "common"
+  },
+  {
+    "id": "c007",
+    "text": "What cryptocurrency is",
+    "tier": "common"
+  },
+  {
+    "id": "c008",
+    "text": "How the internet works",
+    "tier": "common"
+  },
+  {
+    "id": "c009",
+    "text": "Why we dream",
+    "tier": "common"
+  },
+  {
+    "id": "c010",
+    "text": "How solar panels work",
+    "tier": "common"
+  },
+  {
+    "id": "c011",
+    "text": "What a VPN does",
+    "tier": "common"
+  },
+  {
+    "id": "c012",
+    "text": "How Wi-Fi works",
+    "tier": "common"
+  },
+  {
+    "id": "c013",
+    "text": "Why we get goosebumps",
+    "tier": "common"
+  },
+  {
+    "id": "c014",
+    "text": "How touchscreens work",
+    "tier": "common"
+  },
+  {
+    "id": "c015",
+    "text": "What compound interest is",
+    "tier": "common"
+  },
+  {
+    "id": "c016",
+    "text": "How blood pressure works",
+    "tier": "common"
+  },
+  {
+    "id": "c017",
+    "text": "Why ice floats on water",
+    "tier": "common"
+  },
+  {
+    "id": "c018",
+    "text": "How locks and keys work",
+    "tier": "common"
+  },
+  {
+    "id": "c019",
+    "text": "What a calorie is",
+    "tier": "common"
+  },
+  {
+    "id": "c020",
+    "text": "How microwave ovens work",
+    "tier": "common"
+  },
+  {
+    "id": "c021",
+    "text": "Why leaves change color",
+    "tier": "common"
+  },
+  {
+    "id": "c022",
+    "text": "How recycling works",
+    "tier": "common"
+  },
+  {
+    "id": "c023",
+    "text": "What a mortgage is",
+    "tier": "common"
+  },
+  {
+    "id": "c024",
+    "text": "How elevators work",
+    "tier": "common"
+  },
+  {
+    "id": "c025",
+    "text": "Why we yawn",
+    "tier": "common"
+  },
+  {
+    "id": "c026",
+    "text": "How glasses correct vision",
+    "tier": "common"
+  },
+  {
+    "id": "c027",
+    "text": "What taxes are for",
+    "tier": "common"
+  },
+  {
+    "id": "c028",
+    "text": "How ATMs work",
+    "tier": "common"
+  },
+  {
+    "id": "c029",
+    "text": "Why music gives you chills",
+    "tier": "common"
+  },
+  {
+    "id": "c030",
+    "text": "How rainbows form",
+    "tier": "common"
+  },
+  {
+    "id": "c031",
+    "text": "What the stock market does",
+    "tier": "common"
+  },
+  {
+    "id": "c032",
+    "text": "How batteries work",
+    "tier": "common"
+  },
+  {
+    "id": "c033",
+    "text": "Why we have seasons",
+    "tier": "common"
+  },
+  {
+    "id": "c034",
+    "text": "How passports work",
+    "tier": "common"
+  },
+  {
+    "id": "c035",
+    "text": "What a credit score is",
+    "tier": "common"
+  },
+  {
+    "id": "c036",
+    "text": "How air conditioning works",
+    "tier": "common"
+  },
+  {
+    "id": "c037",
+    "text": "Why we sneeze",
+    "tier": "common"
+  },
+  {
+    "id": "c038",
+    "text": "How 3D movies work",
+    "tier": "common"
+  },
+  {
+    "id": "c039",
+    "text": "What DNA is",
+    "tier": "common"
+  },
+  {
+    "id": "c040",
+    "text": "How search engines work",
+    "tier": "common"
+  },
+  {
+    "id": "c041",
+    "text": "Why buildings dont fall over",
+    "tier": "common"
+  },
+  {
+    "id": "c042",
+    "text": "How refrigerators work",
+    "tier": "common"
+  },
+  {
+    "id": "c043",
+    "text": "What a recession is",
+    "tier": "common"
+  },
+  {
+    "id": "c044",
+    "text": "How cameras capture images",
+    "tier": "common"
+  },
+  {
+    "id": "c045",
+    "text": "Why we get hungry",
+    "tier": "common"
+  },
+  {
+    "id": "c046",
+    "text": "How airplanes land",
+    "tier": "common"
+  },
+  {
+    "id": "c047",
+    "text": "What interest rates are",
+    "tier": "common"
+  },
+  {
+    "id": "c048",
+    "text": "How the moon affects tides",
+    "tier": "common"
+  },
+  {
+    "id": "c049",
+    "text": "Why fingers wrinkle in water",
+    "tier": "common"
+  },
+  {
+    "id": "c050",
+    "text": "How car engines work",
+    "tier": "common"
+  },
+  {
+    "id": "c051",
+    "text": "What a VPN protects you from",
+    "tier": "common"
+  },
+  {
+    "id": "c052",
+    "text": "How smoke detectors work",
+    "tier": "common"
+  },
+  {
+    "id": "c053",
+    "text": "Why coffee keeps you awake",
+    "tier": "common"
+  },
+  {
+    "id": "c054",
+    "text": "How satellites stay in orbit",
+    "tier": "common"
+  },
+  {
+    "id": "c055",
+    "text": "What a supply chain is",
+    "tier": "common"
+  },
+  {
+    "id": "c056",
+    "text": "How earthquakes happen",
+    "tier": "common"
+  },
+  {
+    "id": "c057",
+    "text": "Why onions make you cry",
+    "tier": "common"
+  },
+  {
+    "id": "c058",
+    "text": "How submarines work",
+    "tier": "common"
+  },
+  {
+    "id": "c059",
+    "text": "What insurance is",
+    "tier": "common"
+  },
+  {
+    "id": "c060",
+    "text": "How mirrors work",
+    "tier": "common"
+  },
+  {
+    "id": "c061",
+    "text": "Why we have fingerprints",
+    "tier": "common"
+  },
+  {
+    "id": "c062",
+    "text": "How voting machines work",
+    "tier": "common"
+  },
+  {
+    "id": "c063",
+    "text": "What a budget deficit is",
+    "tier": "common"
+  },
+  {
+    "id": "c064",
+    "text": "How clouds form",
+    "tier": "common"
+  },
+  {
+    "id": "c065",
+    "text": "Why music is in 4/4 time",
+    "tier": "common"
+  },
+  {
+    "id": "c066",
+    "text": "How dialysis works",
+    "tier": "common"
+  },
+  {
+    "id": "c067",
+    "text": "What fiber optics do",
+    "tier": "common"
+  },
+  {
+    "id": "c068",
+    "text": "How bridges are built",
+    "tier": "common"
+  },
+  {
+    "id": "c069",
+    "text": "Why we itch",
+    "tier": "common"
+  },
+  {
+    "id": "c070",
+    "text": "How radio waves work",
+    "tier": "common"
+  },
+  {
+    "id": "c071",
+    "text": "What a firewall does",
+    "tier": "common"
+  },
+  {
+    "id": "c072",
+    "text": "How helicopters fly",
+    "tier": "common"
+  },
+  {
+    "id": "c073",
+    "text": "Why bread rises",
+    "tier": "common"
+  },
+  {
+    "id": "c074",
+    "text": "How vinyl records work",
+    "tier": "common"
+  },
+  {
+    "id": "c075",
+    "text": "What net neutrality is",
+    "tier": "common"
+  },
+  {
+    "id": "c076",
+    "text": "How wind turbines generate power",
+    "tier": "common"
+  },
+  {
+    "id": "c077",
+    "text": "Why we feel jet lag",
+    "tier": "common"
+  },
+  {
+    "id": "c078",
+    "text": "How bar codes work",
+    "tier": "common"
+  },
+  {
+    "id": "c079",
+    "text": "What a mutual fund is",
+    "tier": "common"
+  },
+  {
+    "id": "c080",
+    "text": "How earthquakes are measured",
+    "tier": "common"
+  },
+  {
+    "id": "c081",
+    "text": "Why copper turns green",
+    "tier": "common"
+  },
+  {
+    "id": "c082",
+    "text": "How LED lights work",
+    "tier": "common"
+  },
+  {
+    "id": "c083",
+    "text": "What urban sprawl is",
+    "tier": "common"
+  },
+  {
+    "id": "c084",
+    "text": "How noise-canceling headphones work",
+    "tier": "common"
+  },
+  {
+    "id": "c085",
+    "text": "Why glass is transparent",
+    "tier": "common"
+  },
+  {
+    "id": "c086",
+    "text": "How cruise ships float",
+    "tier": "common"
+  },
+  {
+    "id": "c087",
+    "text": "What a carbon footprint is",
+    "tier": "common"
+  },
+  {
+    "id": "c088",
+    "text": "How voice recognition works",
+    "tier": "common"
+  },
+  {
+    "id": "c089",
+    "text": "Why we blush",
+    "tier": "common"
+  },
+  {
+    "id": "c090",
+    "text": "How black boxes on planes work",
+    "tier": "common"
+  },
+  {
+    "id": "c091",
+    "text": "What the gig economy is",
+    "tier": "common"
+  },
+  {
+    "id": "c092",
+    "text": "How inkjet printers work",
+    "tier": "common"
+  },
+  {
+    "id": "c093",
+    "text": "Why paper cuts hurt so much",
+    "tier": "common"
+  },
+  {
+    "id": "c094",
+    "text": "How bank transfers work",
+    "tier": "common"
+  },
+  {
+    "id": "c095",
+    "text": "What a 401k is",
+    "tier": "common"
+  },
+  {
+    "id": "c096",
+    "text": "How contact lenses work",
+    "tier": "common"
+  },
+  {
+    "id": "c097",
+    "text": "Why static electricity happens",
+    "tier": "common"
+  },
+  {
+    "id": "c098",
+    "text": "How electric cars are charged",
+    "tier": "common"
+  },
+  {
+    "id": "c099",
+    "text": "What data privacy means",
+    "tier": "common"
+  },
+  {
+    "id": "c100",
+    "text": "How sonar works",
+    "tier": "common"
+  },
+  {
+    "id": "c101",
+    "text": "Why we get brain freeze",
+    "tier": "common"
+  },
+  {
+    "id": "c102",
+    "text": "How hospitals stay funded",
+    "tier": "common"
+  },
+  {
+    "id": "c103",
+    "text": "What a pivot table is",
+    "tier": "common"
+  },
+  {
+    "id": "c104",
+    "text": "How dams generate electricity",
+    "tier": "common"
+  },
+  {
+    "id": "c105",
+    "text": "Why snoring happens",
+    "tier": "common"
+  },
+  {
+    "id": "c106",
+    "text": "How ballpoint pens work",
+    "tier": "common"
+  },
+  {
+    "id": "c107",
+    "text": "What eminent domain is",
+    "tier": "common"
+  },
+  {
+    "id": "c108",
+    "text": "How gut bacteria affect mood",
+    "tier": "common"
+  },
+  {
+    "id": "c109",
+    "text": "Why spicy food burns",
+    "tier": "common"
+  },
+  {
+    "id": "c110",
+    "text": "How nuclear power plants work",
+    "tier": "common"
+  },
+  {
+    "id": "c111",
+    "text": "What a mutual fund is",
+    "tier": "common"
+  },
+  {
+    "id": "c112",
+    "text": "How lie detectors work",
+    "tier": "common"
+  },
+  {
+    "id": "c113",
+    "text": "Why paper turns yellow",
+    "tier": "common"
+  },
+  {
+    "id": "c114",
+    "text": "How zip codes were designed",
+    "tier": "common"
+  },
+  {
+    "id": "c115",
+    "text": "What a tariff is",
+    "tier": "common"
+  },
+  {
+    "id": "c116",
+    "text": "How GPS tracking in phones works",
+    "tier": "common"
+  },
+  {
+    "id": "c117",
+    "text": "Why blue light affects sleep",
+    "tier": "common"
+  },
+  {
+    "id": "c118",
+    "text": "How antivirus software works",
+    "tier": "common"
+  },
+  {
+    "id": "c119",
+    "text": "What the electoral college does",
+    "tier": "common"
+  },
+  {
+    "id": "c120",
+    "text": "How coral reefs form",
+    "tier": "common"
+  },
+  {
+    "id": "c121",
+    "text": "Why we get motion sickness",
+    "tier": "common"
+  },
+  {
+    "id": "c122",
+    "text": "How automatic doors work",
+    "tier": "common"
+  },
+  {
+    "id": "c123",
+    "text": "What a derivative is",
+    "tier": "common"
+  },
+  {
+    "id": "c124",
+    "text": "How carbon dating works",
+    "tier": "common"
+  },
+  {
+    "id": "c125",
+    "text": "Why cities have grid layouts",
+    "tier": "common"
+  },
+  {
+    "id": "c126",
+    "text": "How cochlear implants work",
+    "tier": "common"
+  },
+  {
+    "id": "c127",
+    "text": "What habeas corpus is",
+    "tier": "common"
+  },
+  {
+    "id": "c128",
+    "text": "How flash drives store data",
+    "tier": "common"
+  },
+  {
+    "id": "c129",
+    "text": "Why lemon juice removes stains",
+    "tier": "common"
+  },
+  {
+    "id": "c130",
+    "text": "How escalators work",
+    "tier": "common"
+  },
+  {
+    "id": "c131",
+    "text": "What a bond is in finance",
+    "tier": "common"
+  },
+  {
+    "id": "c132",
+    "text": "How anesthesia works",
+    "tier": "common"
+  },
+  {
+    "id": "c133",
+    "text": "Why cats purr",
+    "tier": "common"
+  },
+  {
+    "id": "c134",
+    "text": "How oil is refined",
+    "tier": "common"
+  },
+  {
+    "id": "c135",
+    "text": "What zoning laws are",
+    "tier": "common"
+  },
+  {
+    "id": "c136",
+    "text": "How lightning rods work",
+    "tier": "common"
+  },
+  {
+    "id": "c137",
+    "text": "Why hot air balloons rise",
+    "tier": "common"
+  },
+  {
+    "id": "c138",
+    "text": "How memory foam works",
+    "tier": "common"
+  },
+  {
+    "id": "c139",
+    "text": "What the ozone layer does",
+    "tier": "common"
+  },
+  {
+    "id": "c140",
+    "text": "How traffic lights are timed",
+    "tier": "common"
+  },
+  {
+    "id": "c141",
+    "text": "Why we forget dreams",
+    "tier": "common"
+  },
+  {
+    "id": "n001",
+    "text": "NFTs and why they matter",
+    "tier": "niche"
+  },
+  {
+    "id": "n002",
+    "text": "How TikTok's algorithm works",
+    "tier": "niche"
+  },
+  {
+    "id": "n003",
+    "text": "The creator economy explained",
+    "tier": "niche"
+  },
+  {
+    "id": "n004",
+    "text": "What dark patterns in UX design are",
+    "tier": "niche"
+  },
+  {
+    "id": "n005",
+    "text": "Fast fashion supply chains",
+    "tier": "niche"
+  },
+  {
+    "id": "n006",
+    "text": "The gig economy's dark side",
+    "tier": "niche"
+  },
+  {
+    "id": "n007",
+    "text": "Intermittent fasting explained",
+    "tier": "niche"
+  },
+  {
+    "id": "n008",
+    "text": "What sourdough starter is",
+    "tier": "niche"
+  },
+  {
+    "id": "n009",
+    "text": "How influencer marketing works",
+    "tier": "niche"
+  },
+  {
+    "id": "n010",
+    "text": "The quiet quitting movement",
+    "tier": "niche"
+  },
+  {
+    "id": "n011",
+    "text": "What the metaverse is supposed to be",
+    "tier": "niche"
+  },
+  {
+    "id": "n012",
+    "text": "Subscription fatigue",
+    "tier": "niche"
+  },
+  {
+    "id": "n013",
+    "text": "How streaming royalties work for musicians",
+    "tier": "niche"
+  },
+  {
+    "id": "n014",
+    "text": "Plant-based meat science",
+    "tier": "niche"
+  },
+  {
+    "id": "n015",
+    "text": "What a meme coin is",
+    "tier": "niche"
+  },
+  {
+    "id": "n016",
+    "text": "The dark web explained",
+    "tier": "niche"
+  },
+  {
+    "id": "n017",
+    "text": "How algorithmic bias works",
+    "tier": "niche"
+  },
+  {
+    "id": "n018",
+    "text": "Greenwashing in corporate marketing",
+    "tier": "niche"
+  },
+  {
+    "id": "n019",
+    "text": "What doomscrolling does to your brain",
+    "tier": "niche"
+  },
+  {
+    "id": "n020",
+    "text": "How vanity metrics fool startups",
+    "tier": "niche"
+  },
+  {
+    "id": "n021",
+    "text": "The attention economy",
+    "tier": "niche"
+  },
+  {
+    "id": "n022",
+    "text": "What a brand safety controversy is",
+    "tier": "niche"
+  },
+  {
+    "id": "n023",
+    "text": "How dropshipping works",
+    "tier": "niche"
+  },
+  {
+    "id": "n024",
+    "text": "The rise of the anti-hero in TV",
+    "tier": "niche"
+  },
+  {
+    "id": "n025",
+    "text": "What a parasocial relationship is",
+    "tier": "niche"
+  },
+  {
+    "id": "n026",
+    "text": "How ghosting became normalized",
+    "tier": "niche"
+  },
+  {
+    "id": "n027",
+    "text": "Cancel culture mechanics",
+    "tier": "niche"
+  },
+  {
+    "id": "n028",
+    "text": "What a side hustle economy means",
+    "tier": "niche"
+  },
+  {
+    "id": "n029",
+    "text": "The psychology of FOMO",
+    "tier": "niche"
+  },
+  {
+    "id": "n030",
+    "text": "How echo chambers form",
+    "tier": "niche"
+  },
+  {
+    "id": "n031",
+    "text": "What a flash crash in the market is",
+    "tier": "niche"
+  },
+  {
+    "id": "n032",
+    "text": "The loneliness epidemic data",
+    "tier": "niche"
+  },
+  {
+    "id": "n033",
+    "text": "How food delivery apps make money",
+    "tier": "niche"
+  },
+  {
+    "id": "n034",
+    "text": "What a unicorn startup is",
+    "tier": "niche"
+  },
+  {
+    "id": "n035",
+    "text": "The psychology of luxury branding",
+    "tier": "niche"
+  },
+  {
+    "id": "n036",
+    "text": "How gym culture evolved post-COVID",
+    "tier": "niche"
+  },
+  {
+    "id": "n037",
+    "text": "What a content farm is",
+    "tier": "niche"
+  },
+  {
+    "id": "n038",
+    "text": "The rise of working from anywhere",
+    "tier": "niche"
+  },
+  {
+    "id": "n039",
+    "text": "How micro-credentials are replacing degrees",
+    "tier": "niche"
+  },
+  {
+    "id": "n040",
+    "text": "What a media blackout is",
+    "tier": "niche"
+  },
+  {
+    "id": "n041",
+    "text": "The streaming wars explained",
+    "tier": "niche"
+  },
+  {
+    "id": "n042",
+    "text": "How pop music is manufactured",
+    "tier": "niche"
+  },
+  {
+    "id": "n043",
+    "text": "What a brand refresh does psychologically",
+    "tier": "niche"
+  },
+  {
+    "id": "n044",
+    "text": "The wellness industrial complex",
+    "tier": "niche"
+  },
+  {
+    "id": "n045",
+    "text": "How probiotic marketing outpaced science",
+    "tier": "niche"
+  },
+  {
+    "id": "n046",
+    "text": "What rage-farming content is",
+    "tier": "niche"
+  },
+  {
+    "id": "n047",
+    "text": "The science of viral content",
+    "tier": "niche"
+  },
+  {
+    "id": "n048",
+    "text": "How nostalgia marketing works",
+    "tier": "niche"
+  },
+  {
+    "id": "n049",
+    "text": "What a platform monopoly is",
+    "tier": "niche"
+  },
+  {
+    "id": "n050",
+    "text": "The burnout generation",
+    "tier": "niche"
+  },
+  {
+    "id": "n051",
+    "text": "How smart home devices collect your data",
+    "tier": "niche"
+  },
+  {
+    "id": "n052",
+    "text": "What a vibe shift is",
+    "tier": "niche"
+  },
+  {
+    "id": "n053",
+    "text": "The resale economy for sneakers",
+    "tier": "niche"
+  },
+  {
+    "id": "n054",
+    "text": "How direct-to-consumer brands disrupted retail",
+    "tier": "niche"
+  },
+  {
+    "id": "n055",
+    "text": "What blue-collar cool means culturally",
+    "tier": "niche"
+  },
+  {
+    "id": "n056",
+    "text": "The psychology of unboxing videos",
+    "tier": "niche"
+  },
+  {
+    "id": "n057",
+    "text": "How AI art changed the creative industry debate",
+    "tier": "niche"
+  },
+  {
+    "id": "n058",
+    "text": "What a content creator burnout cycle looks like",
+    "tier": "niche"
+  },
+  {
+    "id": "n059",
+    "text": "The rise of longevity science as a trend",
+    "tier": "niche"
+  },
+  {
+    "id": "n060",
+    "text": "How celebrity fragrances became billion-dollar businesses",
+    "tier": "niche"
+  },
+  {
+    "id": "n061",
+    "text": "What a podcast advertising read is",
+    "tier": "niche"
+  },
+  {
+    "id": "n062",
+    "text": "The subscription box economy",
+    "tier": "niche"
+  },
+  {
+    "id": "n063",
+    "text": "How true crime became mainstream",
+    "tier": "niche"
+  },
+  {
+    "id": "n064",
+    "text": "What performative activism is",
+    "tier": "niche"
+  },
+  {
+    "id": "n065",
+    "text": "The housing affordability crisis explained",
+    "tier": "niche"
+  },
+  {
+    "id": "n066",
+    "text": "How cult branding works",
+    "tier": "niche"
+  },
+  {
+    "id": "n067",
+    "text": "What a media ecosystem is",
+    "tier": "niche"
+  },
+  {
+    "id": "n068",
+    "text": "The rise of dry January",
+    "tier": "niche"
+  },
+  {
+    "id": "n069",
+    "text": "How food trends spread globally",
+    "tier": "niche"
+  },
+  {
+    "id": "n070",
+    "text": "What an algo-friendly headline is",
+    "tier": "niche"
+  },
+  {
+    "id": "n071",
+    "text": "The economics of a Starbucks drink",
+    "tier": "niche"
+  },
+  {
+    "id": "n072",
+    "text": "How thrift culture went mainstream",
+    "tier": "niche"
+  },
+  {
+    "id": "n073",
+    "text": "What a brand ambassador deal looks like",
+    "tier": "niche"
+  },
+  {
+    "id": "n074",
+    "text": "The gamification of fitness apps",
+    "tier": "niche"
+  },
+  {
+    "id": "n075",
+    "text": "How seed funding works for startups",
+    "tier": "niche"
+  },
+  {
+    "id": "n076",
+    "text": "What a pivot means for a startup",
+    "tier": "niche"
+  },
+  {
+    "id": "n077",
+    "text": "The rise of emotional support everything",
+    "tier": "niche"
+  },
+  {
+    "id": "n078",
+    "text": "How astroturfing works online",
+    "tier": "niche"
+  },
+  {
+    "id": "n079",
+    "text": "What a thought leader actually does",
+    "tier": "niche"
+  },
+  {
+    "id": "n080",
+    "text": "The data broker industry",
+    "tier": "niche"
+  },
+  {
+    "id": "n081",
+    "text": "How sports betting became legal everywhere",
+    "tier": "niche"
+  },
+  {
+    "id": "n082",
+    "text": "What a blue tick means for trust",
+    "tier": "niche"
+  },
+  {
+    "id": "n083",
+    "text": "The influencer-to-brand pipeline",
+    "tier": "niche"
+  },
+  {
+    "id": "n084",
+    "text": "How VC money distorts startups",
+    "tier": "niche"
+  },
+  {
+    "id": "n085",
+    "text": "What a growth hacker does",
+    "tier": "niche"
+  },
+  {
+    "id": "n086",
+    "text": "The rise of age-targeted content",
+    "tier": "niche"
+  },
+  {
+    "id": "n087",
+    "text": "How true wireless earbuds changed the market",
+    "tier": "niche"
+  },
+  {
+    "id": "n088",
+    "text": "What digital minimalism is",
+    "tier": "niche"
+  },
+  {
+    "id": "n089",
+    "text": "The second brain productivity trend",
+    "tier": "niche"
+  },
+  {
+    "id": "n090",
+    "text": "How YouTube monetization works",
+    "tier": "niche"
+  },
+  {
+    "id": "n091",
+    "text": "What a sponsored post disclosure means",
+    "tier": "niche"
+  },
+  {
+    "id": "n092",
+    "text": "The anti-hustle culture backlash",
+    "tier": "niche"
+  },
+  {
+    "id": "n093",
+    "text": "How fast food menus became cultural events",
+    "tier": "niche"
+  },
+  {
+    "id": "n094",
+    "text": "What brand purpose washing is",
+    "tier": "niche"
+  },
+  {
+    "id": "n095",
+    "text": "The science of food photography",
+    "tier": "niche"
+  },
+  {
+    "id": "n096",
+    "text": "How algorithm changes hurt small creators",
+    "tier": "niche"
+  },
+  {
+    "id": "n097",
+    "text": "What a content calendar is",
+    "tier": "niche"
+  },
+  {
+    "id": "n098",
+    "text": "The rise of the micro-influencer",
+    "tier": "niche"
+  },
+  {
+    "id": "n099",
+    "text": "How paywalls changed journalism",
+    "tier": "niche"
+  },
+  {
+    "id": "n100",
+    "text": "What a digital detox involves",
+    "tier": "niche"
+  },
+  {
+    "id": "n101",
+    "text": "The psychology behind free shipping thresholds",
+    "tier": "niche"
+  },
+  {
+    "id": "n102",
+    "text": "How dark mode became standard",
+    "tier": "niche"
+  },
+  {
+    "id": "n103",
+    "text": "What an exit strategy is for a startup",
+    "tier": "niche"
+  },
+  {
+    "id": "n104",
+    "text": "The rise of sleep tourism",
+    "tier": "niche"
+  },
+  {
+    "id": "n105",
+    "text": "How data brokers sell your information",
+    "tier": "niche"
+  },
+  {
+    "id": "n106",
+    "text": "What a shadow ban is",
+    "tier": "niche"
+  },
+  {
+    "id": "n107",
+    "text": "The economics of a music festival",
+    "tier": "niche"
+  },
+  {
+    "id": "n108",
+    "text": "How self-care became an industry",
+    "tier": "niche"
+  },
+  {
+    "id": "n109",
+    "text": "What a soft launch is",
+    "tier": "niche"
+  },
+  {
+    "id": "n110",
+    "text": "The rise of the 4-day work week debate",
+    "tier": "niche"
+  },
+  {
+    "id": "n111",
+    "text": "How nostalgia IP reboots work",
+    "tier": "niche"
+  },
+  {
+    "id": "n112",
+    "text": "What a digital nomad visa is",
+    "tier": "niche"
+  },
+  {
+    "id": "n113",
+    "text": "The femtech industry explained",
+    "tier": "niche"
+  },
+  {
+    "id": "n114",
+    "text": "How secondhand fashion went luxury",
+    "tier": "niche"
+  },
+  {
+    "id": "d001",
+    "text": "Blockchain consensus mechanisms",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d002",
+    "text": "The Fermi Paradox",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d003",
+    "text": "Gut microbiome research",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d004",
+    "text": "How CRISPR gene editing works",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d005",
+    "text": "Quantum computing basics",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d006",
+    "text": "The simulation hypothesis",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d007",
+    "text": "Dark matter and dark energy",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d008",
+    "text": "Neuroplasticity and brain rewiring",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d009",
+    "text": "Epigenetics and inherited trauma",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d010",
+    "text": "How mRNA vaccines were developed",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d011",
+    "text": "The anthropic principle",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d012",
+    "text": "Quantum entanglement explained",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d013",
+    "text": "How large language models are trained",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d014",
+    "text": "The concept of emergence in complex systems",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d015",
+    "text": "Black hole information paradox",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d016",
+    "text": "How CERN and particle accelerators work",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d017",
+    "text": "The trolley problem in AI ethics",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d018",
+    "text": "Cognitive biases and decision-making research",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d019",
+    "text": "Heisenberg's uncertainty principle",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d020",
+    "text": "How gene therapy works",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d021",
+    "text": "The prisoner's dilemma in game theory",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d022",
+    "text": "Hofstadter's strange loops",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d023",
+    "text": "How memory consolidation happens during sleep",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d024",
+    "text": "The multiverse theory in physics",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d025",
+    "text": "Systemic risk in global financial systems",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d026",
+    "text": "How optogenetics controls brain cells with light",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d027",
+    "text": "The concept of entropy",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d028",
+    "text": "Autophagy and cellular self-cleaning",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d029",
+    "text": "How reinforcement learning works in AI",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d030",
+    "text": "The observer effect in quantum mechanics",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d031",
+    "text": "Synthetic biology applications",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d032",
+    "text": "How immune checkpoint inhibitors fight cancer",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d033",
+    "text": "The concept of regulatory capture",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d034",
+    "text": "Neural correlates of consciousness",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d035",
+    "text": "How carbon capture technology works",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d036",
+    "text": "The Overton window in political science",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d037",
+    "text": "Somatic marker hypothesis",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d038",
+    "text": "How liquid biopsy cancer detection works",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d039",
+    "text": "The principal-agent problem in economics",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d040",
+    "text": "Chaos theory and butterfly effects",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d041",
+    "text": "How spider silk is stronger than steel",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d042",
+    "text": "The concept of information entropy",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d043",
+    "text": "How diffusion models generate images",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d044",
+    "text": "Mirror neurons and empathy research",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d045",
+    "text": "How geothermal energy taps the earth's core",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d046",
+    "text": "The concept of regulatory arbitrage",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d047",
+    "text": "How optogenetics is used in neuroscience",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d048",
+    "text": "The extended phenotype in evolutionary biology",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d049",
+    "text": "How solid-state batteries work",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d050",
+    "text": "The concept of Goodhart's Law",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d051",
+    "text": "How homomorphic encryption works",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d052",
+    "text": "Epigenetic clocks and biological aging",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d053",
+    "text": "How zero-knowledge proofs work",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d054",
+    "text": "The Jevons paradox in sustainability",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d055",
+    "text": "Autophagy and longevity research",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d056",
+    "text": "How transformer architecture changed AI",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d057",
+    "text": "The concept of cognitive load theory",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d058",
+    "text": "Predictive processing theory of perception",
+    "tier": "deep_dive"
+  },
+  {
+    "id": "d059",
+    "text": "How gene drives could eliminate diseases",
+    "tier": "deep_dive"
+  }
+]

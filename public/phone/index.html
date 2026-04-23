@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <title>LieQ — Join</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <link rel="stylesheet" href="phone.css"/>
+</head>
+<body>
+
+<!-- JOIN -->
+<div id="screen-join" class="screen active">
+  <div class="phone-logo">LieQ</div>
+  <div class="card">
+    <h2 class="card-title">Enter Room Code</h2>
+    <input id="code-input" class="code-input" maxlength="4" placeholder="ABCD" autocapitalize="characters" autocomplete="off"/>
+    <input id="name-input" class="name-input" maxlength="20" placeholder="Your name" autocomplete="off"/>
+    <button id="btn-join" class="btn-bs">JOIN</button>
+    <div id="join-error" class="error-msg"></div>
+  </div>
+</div>
+
+<!-- LOBBY WAIT -->
+<div id="screen-lobby-wait" class="screen">
+  <div class="phone-logo">LieQ</div>
+  <div class="card">
+    <div class="status-icon">🎮</div>
+    <h2 class="card-title">You're in!</h2>
+    <div id="lw-name" class="player-name-display">—</div>
+    <p class="muted-text">Waiting for host to start...</p>
+    <div id="lw-player-count" class="player-count-chip">1 player</div>
+  </div>
+</div>
+
+<!-- SPEAKER: TIER SELECT -->
+<div id="screen-tier-select" class="screen">
+  <div class="phone-logo-small">You're the Speaker</div>
+  <div class="card">
+    <h2 class="card-title">Choose your stakes</h2>
+    <div class="tier-options">
+      <button class="tier-btn common" data-tier="common">
+        <span class="tier-name">Common</span>
+        <span class="tier-mult">×1</span>
+        <span class="tier-desc">Everyday knowledge</span>
+      </button>
+      <button class="tier-btn niche" data-tier="niche">
+        <span class="tier-name">Niche</span>
+        <span class="tier-mult">×2</span>
+        <span class="tier-desc">You better know your stuff</span>
+      </button>
+      <button class="tier-btn deep" data-tier="deep_dive">
+        <span class="tier-name">Deep Dive</span>
+        <span class="tier-mult">×3</span>
+        <span class="tier-desc">For the brave & bold</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- SPEAKER: TOPIC CARD -->
+<div id="screen-speaker-topic" class="screen">
+  <div class="phone-logo-small">Your Secret Topic</div>
+  <div class="card topic-card">
+    <div class="topic-reveal-label">TALK ABOUT THIS</div>
+    <div id="st-topic" class="topic-text-large">—</div>
+    <div id="st-tier-badge" class="tier-pill common">COMMON ×1</div>
+    <p class="muted-text" style="font-size:0.85rem;margin-top:1rem">Don't show your phone! Round starts soon...</p>
+  </div>
+</div>
+
+<!-- JURY: WAITING -->
+<div id="screen-jury-wait" class="screen">
+  <div class="phone-logo-small">Jury</div>
+  <div class="card">
+    <div class="status-icon">👂</div>
+    <p class="muted-text"><strong id="jw-speaker-name">—</strong> is reading their topic...</p>
+    <p class="muted-text" style="margin-top:0.5rem;font-size:0.85rem">Get ready to judge!</p>
+  </div>
+</div>
+
+<!-- JURY: ROUND ACTIVE -->
+<div id="screen-jury-active" class="screen">
+  <div class="jury-active-layout">
+    <div class="jury-topic-area">
+      <div id="ja-topic" class="jury-topic">—</div>
+      <div id="ja-tier" class="tier-pill-small common">COMMON</div>
+      <div id="ja-timer" class="jury-timer">60</div>
+    </div>
+    <div class="bs-area">
+      <div id="ja-taps" class="tap-counter"></div>
+      <button id="btn-bs" class="btn-bs-giant" disabled>BS!</button>
+      <div id="ja-cooldown" class="cooldown-msg" style="display:none">⏳ Cooldown...</div>
+    </div>
+  </div>
+</div>
+
+<!-- CHALLENGE VOTE -->
+<div id="screen-challenge-vote" class="screen">
+  <div class="challenge-vote-layout">
+    <div class="vote-question">
+      <span id="cv-challenger">—</span> called BS!<br/>
+      <span class="muted-text" style="font-size:1rem">Is <strong id="cv-speaker">the speaker</strong> telling the truth?</span>
+    </div>
+    <div class="vote-buttons">
+      <button id="btn-real" class="vote-btn real">✅ REAL</button>
+      <button id="btn-fake" class="vote-btn fake">🚨 FAKE</button>
+    </div>
+    <div id="cv-timer" class="cv-timer-bar-wrap">
+      <div id="cv-timer-bar" class="cv-timer-bar"></div>
+    </div>
+    <div id="cv-voted" class="voted-confirm" style="display:none">Vote submitted! Waiting...</div>
+  </div>
+</div>
+
+<!-- ROUND RESULT -->
+<div id="screen-round-result" class="screen">
+  <div class="card">
+    <div id="rr-icon" class="result-icon">🎯</div>
+    <div id="rr-delta" class="result-delta">+0</div>
+    <div class="muted-text">This round</div>
+    <div id="rr-total" class="result-total">0 pts total</div>
+  </div>
+</div>
+
+<!-- GAME END -->
+<div id="screen-phone-game-end" class="screen">
+  <div class="card">
+    <div id="pe-icon" class="status-icon">🏆</div>
+    <div id="pe-rank" class="result-delta">#1</div>
+    <div id="pe-name" class="player-name-display">—</div>
+    <div id="pe-score" class="result-total">0 pts</div>
+  </div>
+</div>
+
+<script src="phone.js"></script>
+</body>
+</html>
