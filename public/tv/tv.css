@@ -342,3 +342,59 @@ html, body {
   0%,100% { transform: translateY(0); }
   50% { transform: translateY(-16px); }
 }
+
+/* ── Suspicion Meter ── */
+.suspicion-meter-wrap {
+  display: flex; align-items: center; gap: 0.75rem;
+  width: 100%; max-width: 600px;
+}
+.sus-label { font-size: 0.9rem; font-weight: 700; color: var(--muted); white-space: nowrap; }
+.suspicion-track {
+  flex: 1; height: 10px; background: var(--border);
+  border-radius: 999px; position: relative; overflow: visible;
+}
+.suspicion-needle {
+  position: absolute; top: 50%; transform: translate(-50%, -50%);
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 12px rgba(255,215,0,0.6);
+  transition: left 0.5s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+/* ── Hot Zone Overlay ── */
+.hot-zone-overlay {
+  position: absolute; top: 1.5rem; left: 50%; transform: translateX(-50%);
+  z-index: 20;
+  font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; letter-spacing: 0.2em;
+  color: #ff6b00;
+  text-shadow: 0 0 30px rgba(255,107,0,0.8);
+  animation: hotFlash 0.5s ease-in-out infinite;
+}
+#screen-active.hot-zone { box-shadow: inset 0 0 100px rgba(255,107,0,0.12); }
+
+/* ── Prediction Count Badge ── */
+.pred-count-badge {
+  background: rgba(255,215,0,0.15); border: 1px solid var(--gold);
+  color: var(--gold); border-radius: 999px;
+  padding: 0.3em 0.9em; font-size: 0.85rem; font-weight: 700;
+}
+
+/* ── Badges Grid ── */
+.badges-grid {
+  display: flex; flex-wrap: wrap; gap: 0.75rem;
+  justify-content: center; margin-top: 1.5rem; max-width: 800px;
+}
+.badge-card {
+  background: var(--surface); border: 1px solid var(--primary);
+  border-radius: 14px; padding: 0.75rem 1.25rem;
+  text-align: center; min-width: 160px;
+  animation: popIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.badge-label { font-size: 1.1rem; font-weight: 700; }
+.badge-player { font-size: 0.85rem; color: var(--gold); margin-top: 0.25rem; }
+.badge-desc { font-size: 0.75rem; color: var(--muted); margin-top: 0.15rem; }
+
+@keyframes hotFlash {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}

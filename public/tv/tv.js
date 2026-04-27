@@ -172,10 +172,21 @@ socket.on('round:new', ({ roundNumber, speakerName, tapsPerPlayer, players }) =>
   renderTapRow(players);
 });
 
-socket.on('round:speakerReading', ({ speakerName, tier }) => {
+socket.on('round:speakerReading', ({ speakerName, tier, durationSeconds }) => {
   setText('sr-speaker-name', speakerName);
   setTierBadge('sr-tier-badge', tier);
+  const dur = durationSeconds === 120 ? '2 MINUTES' : '1 MINUTE';
+  setText('sr-duration', dur);
+  setText('sr-subtitle', 'is reading their topic...');
   show('screen-speaker-reading');
+});
+
+socket.on('round:tierChosen', ({ speakerName, tier }) => {
+  // Speaker locked in tier, now choosing duration — update the round-new subtitle
+  setText('rn-speaker-name', speakerName);
+  const tierNames = { common: 'Common', niche: 'Niche', deep_dive: 'Deep Dive' };
+  const sub = document.querySelector('#screen-round-new .subtitle');
+  if (sub) sub.textContent = `chose ${tierNames[tier] || tier} — picking duration...`;
 });
 
 socket.on('round:publicReveal', ({ topic, tier, speakerName, countdown }) => {
@@ -187,7 +198,7 @@ socket.on('round:publicReveal', ({ topic, tier, speakerName, countdown }) => {
 });
 
 socket.on('round:active', ({ timeRemaining }) => {
-  maxTime = timeRemaining;
+  maxTime = timeRemaining; // set from server (60 or 120)
   setText('ac-timer', timeRemaining);
   updateRing(timeRemaining);
   const topic = el('rv-topic')?.textContent;
@@ -195,6 +206,13 @@ socket.on('round:active', ({ timeRemaining }) => {
   const tier = el('rv-tier-badge')?.className.replace('tier-badge-large ', '');
   setTierBadgeSmall('ac-tier-badge', tier);
   setText('ac-speaker-name', el('rv-speaker-name')?.textContent);
+  // Reset hot zone
+  const hzo = el('hot-zone-overlay'); if (hzo) hzo.style.display = 'none';
+  el('screen-active')?.classList.remove('hot-zone');
+  // Reset suspicion needle to center
+  const needle = el('suspicion-needle'); if (needle) needle.style.left = '50%';
+  // Reset prediction count
+  const pc = el('pred-count-tv'); if (pc) pc.style.display = 'none';
   show('screen-active');
 });
 
@@ -203,7 +221,28 @@ socket.on('round:tick', ({ timeRemaining }) => {
   updateRing(timeRemaining);
 });
 
-socket.on('challenge:start', ({ challengerName, timeLimit }) => {
+socket.on('round:hotZone', () => {
+  SoundEngine.hotZone();
+  const hzo = el('hot-zone-overlay');
+  if (hzo) hzo.style.display = 'block';
+  el('screen-active')?.classList.add('hot-zone');
+});
+
+socket.on('room:suspicion', ({ avg }) => {
+  const needle = el('suspicion-needle');
+  if (needle) needle.style.left = `${avg}%`;
+});
+
+socket.on('prediction:count', ({ total, eligible }) => {
+  const pc = el('pred-count-tv');
+  if (pc) {
+    pc.style.display = 'block';
+    pc.textContent = `🔮 ${total}/${eligible} predicted`;
+  }
+});
+
+socket.on('challenge:start', ({ challengerName, timeLimit, inHotZone }) => {
+  SoundEngine.challenge();
   setText('ch-challenger', challengerName);
   updateVoteBar(0, 0);
   setText('ch-vote-count', 'Waiting for votes...');
@@ -215,15 +254,16 @@ socket.on('challenge:voteUpdate', ({ total, eligible }) => {
   setText('ch-vote-count', `${total} of ${eligible} voted`);
 });
 
-socket.on('challenge:result', ({ challengeSucceeds, deltas, players, fakeVotes, realVotes }) => {
+socket.on('challenge:result', ({ challengeSucceeds, deltas, players, fakeVotes, realVotes, inHotZone }) => {
+  if (challengeSucceeds) SoundEngine.fakeVerdict(); else SoundEngine.realVerdict();
   updateVoteBar(realVotes, fakeVotes);
   const verdict = el('cr-verdict');
   verdict.textContent = challengeSucceeds ? '🚨 BUSTED!' : '✅ SURVIVED!';
   verdict.className = `verdict ${challengeSucceeds ? 'busted' : 'survived'}`;
-  setText('cr-detail', challengeSucceeds
-    ? 'The jury smelled a lie!'
-    : 'The speaker held their ground!'
-  );
+  const detail = challengeSucceeds
+    ? (inHotZone ? '🔥 HOT ZONE bust! Extra points!' : 'The jury smelled a lie!')
+    : (inHotZone ? '💎 Ice cold under pressure!' : 'The speaker held their ground!');
+  setText('cr-detail', detail);
   el('cr-deltas').innerHTML = renderDeltas(deltas, players);
   show('screen-challenge-result');
 });
@@ -244,7 +284,8 @@ socket.on('leaderboard:show', ({ leaderboard }) => {
   show('screen-leaderboard');
 });
 
-socket.on('game:end', ({ winner, leaderboard, stats }) => {
+socket.on('game:end', ({ winner, leaderboard, stats, badges }) => {
+  SoundEngine.winner();
   setText('ge-winner', winner.name);
   el('ge-stats').innerHTML = `
     <div class="stat-card">
@@ -264,6 +305,17 @@ socket.on('game:end', ({ winner, leaderboard, stats }) => {
       <div class="stat-card-value">${leaderboard.length}</div>
     </div>
   `;
+  // Badges
+  const badgesEl = el('ge-badges');
+  if (badgesEl && badges?.length) {
+    badgesEl.innerHTML = badges.map((b, i) =>
+      `<div class="badge-card" style="animation-delay:${i * 0.1}s">
+        <div class="badge-label">${b.label}</div>
+        <div class="badge-player">${b.playerName}</div>
+        <div class="badge-desc">${b.desc}</div>
+      </div>`
+    ).join('');
+  }
   show('screen-game-end');
 });
 

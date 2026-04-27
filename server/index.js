@@ -4,10 +4,26 @@ const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const path = require('path');
+const os = require('os');
+
+// Get the machine's LAN IP so phones on the same WiFi can reach the QR URL
+function getLanIP() {
+  const ifaces = os.networkInterfaces();
+  for (const name of Object.keys(ifaces)) {
+    for (const iface of ifaces[name]) {
+      if (iface.family === 'IPv4' && !iface.internal) return iface.address;
+    }
+  }
+  return 'localhost';
+}
+const LAN_IP = getLanIP();
 
 const rm = require('./roomManager');
 const engine = require('./gameEngine');
-const { STATES, TIMINGS } = engine;
+const { STATES, TIMINGS, SCORING } = engine;
+
+// Per-room suspicion values: roomCode → { playerId → 0-100 }
+const suspicionMap = {};
 
 const app = express();
 const server = http.createServer(app);
@@ -68,12 +84,22 @@ function clearAllTimers(game) {
 function startRoundTicker(game) {
   clearTimer(game, 'tick');
   clearTimer(game, 'roundEnd');
+  let hotZoneFired = false;
 
   game.timers.tick = setInterval(() => {
     if (game.state !== STATES.ROUND_ACTIVE) return;
     game.currentRound.timeRemaining--;
-    emitToRoom(game.roomCode, 'round:tick', { timeRemaining: game.currentRound.timeRemaining });
-    if (game.currentRound.timeRemaining <= 0) finishRoundNaturally(game);
+    const t = game.currentRound.timeRemaining;
+    emitToRoom(game.roomCode, 'round:tick', { timeRemaining: t });
+
+    // Hot Zone: fire once when timer hits threshold
+    if (t <= SCORING.HOT_ZONE_THRESHOLD && !hotZoneFired) {
+      hotZoneFired = true;
+      engine.enterHotZone(game);
+      emitToRoom(game.roomCode, 'round:hotZone', { timeRemaining: t });
+    }
+
+    if (t <= 0) finishRoundNaturally(game);
   }, 1000);
 }
 
@@ -89,14 +115,19 @@ function resumeRoundTicker(game) {
 
 function finishRoundNaturally(game) {
   pauseRoundTicker(game);
-  const { speakerId, delta } = engine.endRound(game);
+  // Clear suspicion for this room
+  delete suspicionMap[game.roomCode];
+
+  const { speakerId, delta, predictionResults } = engine.endRound(game);
   const lb = engine.buildLeaderboard(game);
 
   emitToRoom(game.roomCode, 'round:end', {
     speakerId,
     speakerName: game.players[speakerId]?.name,
     pointDeltas: game.currentRound.pointDeltas,
+    predictionResults,
     leaderboard: lb,
+    players: Object.values(game.players).map(p => ({ id: p.id, name: p.name, score: p.score })),
   });
 
   game.timers.leaderboard = setTimeout(() => showLeaderboard(game), TIMINGS.ROUND_END_S * 1000);
@@ -155,15 +186,44 @@ function handleTierSelect(game, speakerId, tier) {
   if (game.currentRound.speakerId !== speakerId) return;
   clearTimer(game, 'tierTimeout');
 
-  const { topic, topicId } = engine.selectTier(game, tier);
+  engine.selectTier(game, tier);
+
+  // Prompt speaker to choose duration (they still haven't seen the topic)
+  emitToPlayer(speakerId, 'speaker:selectDuration', {
+    tier,
+    options: [
+      { seconds: 60, label: '1 Minute', description: 'Quick & sharp' },
+      { seconds: 120, label: '2 Minutes', description: 'Go deep, earn more' },
+    ],
+  });
+
+  // Let the TV know tier is locked, speaker is now choosing duration
+  emitToTV(game.roomCode, 'round:tierChosen', {
+    speakerName: game.players[speakerId]?.name,
+    tier,
+  });
+
+  // Auto-default to 60s if speaker doesn't pick within 15s
+  game.timers.durationTimeout = setTimeout(() => {
+    if (game.state === STATES.DURATION_SELECT) handleDurationSelect(game, speakerId, 60);
+  }, 15000);
+}
+
+function handleDurationSelect(game, speakerId, durationSeconds) {
+  if (game.state !== STATES.DURATION_SELECT) return;
+  if (game.currentRound.speakerId !== speakerId) return;
+  clearTimer(game, 'durationTimeout');
+
+  const { topic, tier } = engine.selectDuration(game, durationSeconds);
 
   // Speaker gets the topic privately
-  emitToPlayer(speakerId, 'speaker:topic', { topic, tier, topicId });
+  emitToPlayer(speakerId, 'speaker:topic', { topic, tier, durationSeconds });
 
-  // TV shows "Speaker is reading their topic..."
+  // TV shows reading state with duration visible
   emitToTV(game.roomCode, 'round:speakerReading', {
     speakerName: game.players[speakerId]?.name,
     tier,
+    durationSeconds,
   });
 
   // Non-speaker phones show waiting state
@@ -173,7 +233,7 @@ function handleTierSelect(game, speakerId, tier) {
     }
   });
 
-  // After private reveal, show topic to everyone
+  // After private reveal window, show topic to everyone
   game.timers.publicReveal = setTimeout(() => doPublicReveal(game), TIMINGS.SPEAKER_PRIVATE_S * 1000);
 }
 
@@ -227,13 +287,10 @@ function handleBS(game, challengerId) {
 
 function resolveBS(game) {
   clearTimer(game, 'challengeVote');
-  const { challengeSucceeds, deltas, fakeVotes, realVotes } = engine.resolveChallenge(game);
+  const { challengeSucceeds, deltas, fakeVotes, realVotes, predictionResults, inHotZone } = engine.resolveChallenge(game);
 
   emitToRoom(game.roomCode, 'challenge:result', {
-    challengeSucceeds,
-    deltas,
-    fakeVotes,
-    realVotes,
+    challengeSucceeds, deltas, fakeVotes, realVotes, inHotZone,
     leaderboard: engine.buildLeaderboard(game),
     players: Object.values(game.players).map(p => ({
       id: p.id, name: p.name, score: p.score, bsTapsRemaining: p.bsTapsRemaining,
@@ -242,13 +299,16 @@ function resolveBS(game) {
 
   if (challengeSucceeds) {
     // Round ends — speaker got caught
+    delete suspicionMap[game.roomCode];
     game.timers.afterChallenge = setTimeout(() => {
       const lb = engine.buildLeaderboard(game);
       emitToRoom(game.roomCode, 'round:end', {
         speakerId: game.currentRound.speakerId,
         pointDeltas: game.currentRound.pointDeltas,
+        predictionResults,
         leaderboard: lb,
         endedByChallenge: true,
+        players: Object.values(game.players).map(p => ({ id: p.id, name: p.name, score: p.score })),
       });
       game.timers.leaderboard = setTimeout(() => showLeaderboard(game), TIMINGS.ROUND_END_S * 1000);
     }, TIMINGS.CHALLENGE_RESULT_S * 1000);
@@ -276,7 +336,8 @@ io.on('connection', (socket) => {
     socket.join(roomCode);
     socket.data = { clientType: 'tv', roomCode };
 
-    const joinUrl = `${process.env.JOIN_URL || `http://localhost:${process.env.PORT || 3000}`}/join/${roomCode}`;
+    const base = process.env.JOIN_URL || `http://${LAN_IP}:${process.env.PORT || 3000}`;
+    const joinUrl = `${base}/join/${roomCode}`;
     cb({ roomCode, joinUrl });
   });
 
@@ -312,6 +373,14 @@ io.on('connection', (socket) => {
     handleTierSelect(room.game, socket.id, tier);
   });
 
+  // ── Speaker selects duration ──
+  socket.on('speaker:durationSelect', ({ seconds }) => {
+    const { roomCode } = socket.data || {};
+    const room = rm.getRoom(roomCode);
+    if (!room) return;
+    handleDurationSelect(room.game, socket.id, seconds);
+  });
+
   // ── Player taps BS ──
   socket.on('player:bs', () => {
     const { roomCode } = socket.data || {};
@@ -328,15 +397,40 @@ io.on('connection', (socket) => {
     const valid = engine.submitVote(room.game, socket.id, vote);
     if (!valid) return;
 
-    // Send live vote count update (anonymous)
     const ch = room.game.currentRound?.challenge;
     if (ch) {
       const votes = Object.values(ch.votes);
       emitToRoom(roomCode, 'challenge:voteUpdate', {
         total: votes.length,
-        eligible: engine.playerCount(room.game) - 2, // excl speaker + challenger
+        eligible: engine.playerCount(room.game) - 2,
       });
     }
+  });
+
+  // ── Player submits pre-round prediction ──
+  socket.on('player:prediction', ({ prediction }) => {
+    const { roomCode } = socket.data || {};
+    const room = rm.getRoom(roomCode);
+    if (!room) return;
+    const ok = engine.submitPrediction(room.game, socket.id, prediction);
+    if (!ok) return;
+    // Let TV show a prediction count indicator
+    const total = Object.keys(room.game.currentRound?.predictions || {}).length;
+    const eligible = engine.playerCount(room.game) - 1; // excl speaker
+    emitToTV(roomCode, 'prediction:count', { total, eligible });
+  });
+
+  // ── Player updates suspicion level (0=real, 100=fake) ──
+  socket.on('player:suspicion', ({ value }) => {
+    const { roomCode } = socket.data || {};
+    if (!roomCode) return;
+    if (!suspicionMap[roomCode]) suspicionMap[roomCode] = {};
+    suspicionMap[roomCode][socket.id] = Math.max(0, Math.min(100, value));
+
+    // Average all values and broadcast to TV
+    const vals = Object.values(suspicionMap[roomCode]);
+    const avg = vals.length ? Math.round(vals.reduce((a, b) => a + b, 0) / vals.length) : 50;
+    emitToTV(roomCode, 'room:suspicion', { avg, count: vals.length });
   });
 
   // ── Host advances to next round manually ──
@@ -383,5 +477,5 @@ const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`\n🎮 LieQ server running → http://localhost:${PORT}`);
   console.log(`📺 TV Screen  → http://localhost:${PORT}/tv`);
-  console.log(`📱 Phone Join → http://localhost:${PORT}/join\n`);
+  console.log(`📱 Phone Join → http://${LAN_IP}:${PORT}/join  ← use this for phones\n`);
 });

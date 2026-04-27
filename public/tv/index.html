@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
   <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="/shared/sounds.js"></script>
   <link rel="stylesheet" href="tv.css" />
 </head>
 <body>
@@ -57,7 +58,9 @@
   <div class="center-content">
     <div id="sr-tier-badge" class="tier-badge-large">NICHE</div>
     <h2 class="speaker-spotlight"><span id="sr-speaker-name">—</span></h2>
-    <p class="subtitle">is reading their topic...</p>
+    <p id="sr-subtitle" class="subtitle">is reading their topic...</p>
+    <div id="sr-duration" style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--gold);letter-spacing:0.1em"></div>
+    <div id="sr-pred-count" class="pred-count-badge" style="display:none"></div>
     <div class="thinking-dots"><span></span><span></span><span></span></div>
   </div>
 </div>
@@ -74,10 +77,12 @@
 
 <!-- ROUND ACTIVE -->
 <div id="screen-active" class="screen">
+  <div id="hot-zone-overlay" class="hot-zone-overlay" style="display:none">🔥 HOT ZONE ×1.5</div>
   <div class="active-layout">
     <div class="active-top">
       <div id="ac-tier-badge" class="tier-badge-small">COMMON</div>
       <div class="speaker-label">🎤 <span id="ac-speaker-name">—</span></div>
+      <div id="pred-count-tv" class="pred-count-badge" style="display:none"></div>
     </div>
     <div id="ac-topic" class="topic-hero-active">Topic</div>
     <div class="timer-ring-wrap">
@@ -86,6 +91,14 @@
         <circle id="ring-progress" class="ring-fg" cx="60" cy="60" r="52"/>
       </svg>
       <div id="ac-timer" class="timer-number">60</div>
+    </div>
+    <!-- Suspicion Meter -->
+    <div class="suspicion-meter-wrap">
+      <span class="sus-label sus-left">👍 REAL</span>
+      <div class="suspicion-track">
+        <div id="suspicion-needle" class="suspicion-needle" style="left:50%"></div>
+      </div>
+      <span class="sus-label sus-right">FAKE 🤔</span>
     </div>
     <div class="player-tap-row" id="ac-player-tap-row"></div>
   </div>
@@ -143,6 +156,8 @@
     <div class="winner-name" id="ge-winner">—</div>
     <div class="winner-subtitle">wins LieQ!</div>
     <div id="ge-stats" class="stats-grid"></div>
+    <!-- Badges -->
+    <div id="ge-badges" class="badges-grid"></div>
     <button id="btn-play-again" class="btn-primary" style="margin-top:2rem">Play Again</button>
   </div>
 </div>
