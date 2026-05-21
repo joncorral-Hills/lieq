@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LieQ — Licensing Sell Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink: #0a0a14;
+    --primary: #6c5ce7;
+    --primary-light: #a29bfe;
+    --red: #e84855;
+    --gold: #f0b429;
+    --green: #00b894;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --surface: #f8f7ff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 14px; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    background: #fff;
+    width: 8.5in;
+    min-height: 11in;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* ── Header Band ── */
+  .header {
+    background: var(--ink);
+    color: #fff;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 0.6in 0.55in 0.45in;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(108,92,231,0.4) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 20%, rgba(232,72,85,0.3) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .header-left { position: relative; }
+  .game-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5.5rem;
+    letter-spacing: 0.06em;
+    line-height: 0.9;
+    background: linear-gradient(135deg, #a29bfe 0%, #ff7675 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .game-tagline {
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-top: 0.3rem;
+  }
+  .header-right {
+    position: relative;
+    text-align: right;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+  }
+  .license-badge {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 0.25em 0.7em;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── Body ── */
+  .body { padding: 0.35in 0.55in 0.45in; display: grid; gap: 0.28in; }
+
+  /* ── Hook Row ── */
+  .hook {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.25in;
+    align-items: start;
+  }
+  .elevator {
+    font-size: 1.18rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .elevator em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--primary), var(--red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hook-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.12in;
+  }
+  .stat-box {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 0.6rem 0.75rem;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.03em;
+    line-height: 1;
+    color: var(--primary);
+  }
+  .stat-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+
+  /* ── Section ── */
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--primary);
+    border-bottom: 1.5px solid var(--primary-light);
+    padding-bottom: 0.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── How It Plays ── */
+  .how-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.15in; }
+  .step {
+    text-align: center;
+    position: relative;
+  }
+  .step-icon {
+    font-size: 1.6rem;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+  .step-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0.2rem;
+  }
+  .step-desc {
+    font-size: 0.65rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .step-arrow {
+    position: absolute;
+    right: -0.45rem;
+    top: 1.1rem;
+    font-size: 0.8rem;
+    color: var(--border);
+  }
+  .step:last-child .step-arrow { display: none; }
+
+  /* ── Two-col ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0.25in; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.18in; }
+
+  /* ── Feature Pills ── */
+  .feature-list { display: flex; flex-direction: column; gap: 0.35rem; }
+  .feature-item {
+    display: flex; gap: 0.5rem; align-items: flex-start;
+  }
+  .feature-bullet {
+    flex-shrink: 0;
+    width: 18px; height: 18px;
+    background: linear-gradient(135deg, var(--primary), var(--red));
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.6rem; color: #fff;
+    margin-top: 0.05rem;
+  }
+  .feature-text { font-size: 0.75rem; line-height: 1.45; }
+  .feature-text strong { display: block; font-weight: 700; font-size: 0.76rem; }
+
+  /* ── Topic Tiers ── */
+  .tier-card {
+    border-radius: 8px;
+    padding: 0.6rem 0.75rem;
+    border: 1.5px solid;
+  }
+  .tier-card.common { border-color: var(--green); background: rgba(0,184,148,0.05); }
+  .tier-card.niche { border-color: var(--gold); background: rgba(240,180,41,0.05); }
+  .tier-card.deep { border-color: var(--red); background: rgba(232,72,85,0.05); }
+  .tier-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+  }
+  .tier-card.common .tier-label { color: var(--green); }
+  .tier-card.niche .tier-label { color: var(--gold); }
+  .tier-card.deep .tier-label { color: var(--red); }
+  .tier-mult {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--muted);
+    margin-left: 0.4rem;
+  }
+  .tier-desc { font-size: 0.67rem; color: var(--muted); margin-top: 0.2rem; line-height: 1.4; }
+  .tier-example {
+    font-size: 0.67rem;
+    font-style: italic;
+    margin-top: 0.25rem;
+    color: var(--ink);
+  }
+
+  /* ── Market ── */
+  .market-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.15in; }
+  .market-card {
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 0.6rem 0.7rem;
+    background: var(--surface);
+  }
+  .market-name { font-weight: 700; font-size: 0.78rem; margin-bottom: 0.2rem; }
+  .market-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.03em;
+    color: var(--primary);
+    line-height: 1;
+  }
+  .market-note { font-size: 0.65rem; color: var(--muted); margin-top: 0.2rem; line-height: 1.4; }
+
+  /* ── Expansion packs ── */
+  .pack-grid { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .pack-chip {
+    display: inline-block;
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+    padding: 0.2em 0.75em;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--muted);
+    background: var(--surface);
+  }
+  .pack-chip.highlight {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: rgba(108,92,231,0.06);
+  }
+
+  /* ── Licensing models ── */
+  .license-card {
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .license-card.featured { border-color: var(--primary); }
+  .license-head {
+    padding: 0.45rem 0.7rem;
+    background: var(--surface);
+    font-weight: 700;
+    font-size: 0.78rem;
+    border-bottom: 1.5px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .license-card.featured .license-head {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+  }
+  .license-tag {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+  .license-body { padding: 0.5rem 0.7rem; }
+  .license-line {
+    font-size: 0.68rem;
+    color: var(--muted);
+    line-height: 1.5;
+    padding: 0.1rem 0;
+    display: flex; gap: 0.4rem; align-items: flex-start;
+  }
+  .license-line::before { content: '→'; color: var(--primary); flex-shrink: 0; }
+
+  /* ── Footer ── */
+  .footer {
+    background: var(--ink);
+    color: #fff;
+    padding: 0.3in 0.55in;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 1rem;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.1em;
+    background: linear-gradient(135deg, #a29bfe, #ff7675);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .footer-sub {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.45);
+    margin-top: 0.15rem;
+  }
+  .footer-contact {
+    text-align: right;
+    font-size: 0.72rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.7);
+  }
+  .footer-contact strong { color: #fff; display: block; font-size: 0.85rem; }
+
+  /* ── Quote callout ── */
+  .callout {
+    background: linear-gradient(135deg, rgba(108,92,231,0.08), rgba(232,72,85,0.06));
+    border-left: 3px solid var(--primary);
+    border-radius: 0 8px 8px 0;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .callout strong { font-style: normal; color: var(--primary); }
+
+  /* Print */
+  @media print {
+    body { width: 100%; margin: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .header { -webkit-print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-left">
+    <div class="game-logo">LieQ</div>
+    <div class="game-tagline">Your Lying Quotient Is About to Be Tested</div>
+  </div>
+  <div class="header-right">
+    <div class="license-badge">Licensing Opportunity</div><br/>
+    Digital Party Game<br/>
+    3–20 Players · All Ages<br/>
+    TV Screen + Smartphones<br/>
+    No App Download Required
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="body">
+
+  <!-- HOOK -->
+  <div class="hook">
+    <div>
+      <p class="elevator">
+        LieQ is a <em>real-time digital party game</em> where players speak confidently about topics they may or may not understand — and everyone else decides if they're telling the truth or spinning gold from thin air.
+      </p>
+      <div class="callout" style="margin-top:0.4rem">
+        Think <strong>Bluff Your Way In</strong> meets <strong>Kahoot</strong> — every round produces a
+        shareable moment, a conversation, and a lasting personality reveal.
+      </div>
+    </div>
+    <div class="hook-stats">
+      <div class="stat-box">
+        <div class="stat-num">60s</div>
+        <div class="stat-label">To Round Start</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">314+</div>
+        <div class="stat-label">Base Topics</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">3–20</div>
+        <div class="stat-label">Players</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">0</div>
+        <div class="stat-label">App Downloads</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT PLAYS -->
+  <div>
+    <div class="section-title">How It Plays — One Round in 5 Beats</div>
+    <div class="how-row">
+      <div class="step">
+        <span class="step-icon">🎤</span>
+        <span class="step-num">Step 01</span>
+        <div class="step-title">Speaker Chosen</div>
+        <div class="step-desc">One player is randomly selected as the Speaker each round via automatic rotation.</div>
+        <span class="step-arrow">›</span>
+      </div>
+      <div class="step">
+        <span class="step-icon">🎲</span>
+        <span class="step-num">Step 02</span>
+        <div class="step-title">Pick Stakes &amp; Time</div>
+        <div class="step-desc">Speaker selects a topic tier (×1, ×2, ×3 points) and presentation length (60 or 120 sec).</div>
+        <span class="step-arrow">›</span>
+      </div>
+      <div class="step">
+        <span class="step-icon">🔮</span>
+        <span class="step-num">Step 03</span>
+        <div class="step-title">Jury Predicts</div>
+        <div class="step-desc">Before the Speaker starts talking, every juror secretly predicts Real or Fake for +15 bonus points.</div>
+        <span class="step-arrow">›</span>
+      </div>
+      <div class="step">
+        <span class="step-icon">🚨</span>
+        <span class="step-num">Step 04</span>
+        <div class="step-title">BS! Challenge</div>
+        <div class="step-desc">Any juror can tap BS! mid-speech. The room votes. A live Suspicion Meter on the TV shows the room's mood.</div>
+        <span class="step-arrow">›</span>
+      </div>
+      <div class="step">
+        <span class="step-icon">🏆</span>
+        <span class="step-num">Step 05</span>
+        <div class="step-title">Score &amp; Reveal</div>
+        <div class="step-desc">Points awarded, prediction results revealed, personality badges earned. Leaderboard flips — repeat.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES + TIERS -->
+  <div class="two-col">
+    <div>
+      <div class="section-title">Signature Mechanics</div>
+      <div class="feature-list">
+        <div class="feature-item">
+          <div class="feature-bullet">✓</div>
+          <div class="feature-text"><strong>🔮 Secret Pre-Round Prediction</strong>Every juror locks in a Real/Fake call before the Speaker begins. Zero dead time — everyone is mentally engaged from word one.</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-bullet">✓</div>
+          <div class="feature-text"><strong>📊 Live Suspicion Meter (TV)</strong>An anonymous needle on the shared screen shows the room's collective skepticism in real time. Comedy gold when it's pinned to FAKE and no one acts.</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-bullet">✓</div>
+          <div class="feature-text"><strong>🔥 Final 10-Second Hot Zone</strong>The last 10 seconds of every round apply a ×1.5 score multiplier to all BS calls. Tension spikes every single round.</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-bullet">✓</div>
+          <div class="feature-text"><strong>🎭 Personality Badges at Game End</strong>Six badges (The Oracle, Sharpshooter, Ice Cold, Trigger Happy, etc.) drive post-game conversation and replay motivation.</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-bullet">✓</div>
+          <div class="feature-text"><strong>🔊 Procedural Sound Design</strong>Web Audio engine — no files, instant response. BS buzzer, challenge stings, Hot Zone alert, winner fanfare all synthesized in-browser.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-title">Topic Tier System</div>
+      <div style="display:flex; flex-direction:column; gap:0.3rem;">
+        <div class="tier-card common">
+          <div><span class="tier-label">Common</span><span class="tier-mult">×1 Points</span></div>
+          <div class="tier-desc">Household topics. Anyone can fake or know it. Low risk, great opener.</div>
+          <div class="tier-example">"How Wi-Fi works" · "Why we dream" · "What inflation means"</div>
+        </div>
+        <div class="tier-card niche">
+          <div><span class="tier-label">Niche</span><span class="tier-mult">×2 Points</span></div>
+          <div class="tier-desc">Culturally specific. Requires either real knowledge or excellent bluffing.</div>
+          <div class="tier-example">"The creator economy" · "What a meme coin is" · "Quiet quitting"</div>
+        </div>
+        <div class="tier-card deep">
+          <div><span class="tier-label">Deep Dive</span><span class="tier-mult">×3 Points</span></div>
+          <div class="tier-desc">Expert territory. Highest stakes. Attempted by the brave.</div>
+          <div class="tier-example">"Quantum entanglement" · "The Fermi paradox" · "How CRISPR works"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARKET + EXPANSION -->
+  <div class="two-col">
+    <div>
+      <div class="section-title">Market Opportunity</div>
+      <div class="market-row" style="grid-template-columns:1fr 1fr 1fr;">
+        <div class="market-card">
+          <div class="market-name">Party Game Market</div>
+          <div class="market-val">$14B</div>
+          <div class="market-note">Global tabletop/party market, growing 10% YoY through 2028</div>
+        </div>
+        <div class="market-card">
+          <div class="market-name">Digital Hybrid</div>
+          <div class="market-val">Jackbox</div>
+          <div class="market-note">$8M+ annual revenue per title. LieQ uses an identical distribution model.</div>
+        </div>
+        <div class="market-card">
+          <div class="market-name">Target Sessions</div>
+          <div class="market-val">20–45<span style="font-size:1rem">min</span></div>
+          <div class="market-note">Ideal for game nights, bars, corporate events, classroom use</div>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:0.35rem">
+        Unlike Jackbox, <strong>LieQ requires no purchase at session start</strong> — players join via QR code on any smartphone. The host pays for access; everyone else just shows up.
+      </div>
+    </div>
+    <div>
+      <div class="section-title">Expansion Pack Roadmap</div>
+      <div style="font-size:0.72rem; color:var(--muted); margin-bottom:0.4rem; line-height:1.5;">The topic system is fully modular. Any category becomes a licensed pack — sold separately or bundled with specific SKUs.</div>
+      <div class="pack-grid">
+        <span class="pack-chip highlight">🍻 After Dark</span>
+        <span class="pack-chip highlight">🏈 Sports IQ</span>
+        <span class="pack-chip highlight">🎬 Pop Culture</span>
+        <span class="pack-chip highlight">💰 Finance Bros</span>
+        <span class="pack-chip">🔬 Science Nerds</span>
+        <span class="pack-chip">🎮 Gaming</span>
+        <span class="pack-chip">🌍 Geography</span>
+        <span class="pack-chip">📚 History</span>
+        <span class="pack-chip">🍕 Food & Drink</span>
+        <span class="pack-chip">🏥 Medical</span>
+        <span class="pack-chip">⚖️ Law & Crime</span>
+        <span class="pack-chip">🎵 Music</span>
+        <span class="pack-chip">📺 Reality TV</span>
+        <span class="pack-chip">🌐 Tech & AI</span>
+        <span class="pack-chip">+ Custom Branded</span>
+      </div>
+      <div style="font-size:0.68rem; color:var(--muted); margin-top:0.4rem; font-style:italic;">Highlighted packs = highest requested / MVP priority. Custom branded packs available for corporate licensing.</div>
+    </div>
+  </div>
+
+  <!-- LICENSING MODELS -->
+  <div>
+    <div class="section-title">Licensing Structures Available</div>
+    <div class="three-col">
+      <div class="license-card">
+        <div class="license-head">
+          Digital Platform License
+          <span class="license-tag">SaaS</span>
+        </div>
+        <div class="license-body">
+          <div class="license-line">White-label the full hosted platform under your brand</div>
+          <div class="license-line">Revenue share or flat monthly fee structure</div>
+          <div class="license-line">Full source code access + ongoing updates</div>
+          <div class="license-line">Ideal for: Streaming platforms, entertainment apps, EdTech</div>
+        </div>
+      </div>
+      <div class="license-card featured">
+        <div class="license-head">
+          Venue &amp; Events License
+          <span class="license-tag">★ Recommended</span>
+        </div>
+        <div class="license-body">
+          <div class="license-line">Per-session or per-venue annual flat fee</div>
+          <div class="license-line">Branded lobby screen + custom topic packs</div>
+          <div class="license-line">QR-drive-to-join requires no patron install</div>
+          <div class="license-line">Ideal for: Bars, restaurants, escape rooms, cruise lines</div>
+        </div>
+      </div>
+      <div class="license-card">
+        <div class="license-head">
+          Game Publisher License
+          <span class="license-tag">IP</span>
+        </div>
+        <div class="license-body">
+          <div class="license-line">Full IP rights for physical or digital product</div>
+          <div class="license-line">Advance + royalty structure on net sales</div>
+          <div class="license-line">Mechanics, topic library &amp; brand assets included</div>
+          <div class="license-line">Ideal for: Tabletop publishers, party game studios</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>
+    <div class="footer-logo">LieQ</div>
+    <div class="footer-sub">Fully functional prototype available for live demo · Node.js · Socket.IO · GitHub: joncorral-Hills/lieq</div>
+  </div>
+  <div class="footer-contact">
+    <strong>Jon Corral</strong>
+    jon@example.com<br/>
+    linkedin.com/in/joncorral<br/>
+    Available for NDA + demo session
+  </div>
+</div>
+
+</body>
+</html>
